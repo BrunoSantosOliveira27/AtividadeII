@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { View, Text, TextInput, Button, ImageBackground, StyleSheet } from 'react-native';
 
 const calculoHoraExtra = () => {
-    const [SalarioBase, setvalorSalario] = useState(0);
-    const [HorasTrabalhadas, setTotalHoraExtra] = useState(0);
-    const [SalarioFinal, setvalorFinal] = useState(0);
-    let jornadaNormal = 160;
+    const [salarioBase, setvalorSalario] = useState(0);
+    const [horasTrabalhadas, setTotalHora] = useState(0);
+    const [salarioFinal, setvalorFinal] = useState(0);
+    const horasNormais = 160;
 
     return (
 
@@ -13,34 +13,39 @@ const calculoHoraExtra = () => {
             <ImageBackground style={styles.logo} source={'https://46587.cdn.simplo7.net/static/46587/sku/tecidos-tecido-estampado-tempero-e-pizza-fundo-preto-100-algodao--p-1662898471442.jpg'} >
 
                 <Text style={styles.fonte}>Salario base</Text>
-                <Text style={styles.fontes}>Valor do salário</Text>
+                <Text style={styles.fontes}>Salário base</Text>
                 <TextInput
-                    value={SalarioBase}
+                    value={salarioBase}
                     onChangeText={setvalorSalario}
                     placeholder="Valor do salario"
                 />
-                <Text style={styles.fontes}>Quantidade de horas extras</Text>
+                <Text style={styles.fontes}>Horas trabalhadas</Text>
                 <TextInput
-                    value={HorasTrabalhadas}
-                    onChangeText={setTotalHoraExtra}
-                    placeholder="Total de horas extras"
+                    value={horasTrabalhadas}
+                    onChangeText={setTotalHora}
+                    placeholder="Total de horas trabalhadas"
                 />
                 <Button
                     title="Calcular"
                     onPress={() => {
-                        if (HorasTrabalhadas < 160) {
-                            setvalorFinal(SalarioBase)
-                        }
-                        else if (HorasTrabalhadas > 160) {
-                            var horasExtras = HorasTrabalhadas - jornadaNormal
-                            var valorHoraExtra = 
-                
+                        if (horasTrabalhadas <= 160) {  
+                            var valorHora = salarioBase / horasNormais
+                            var horasExtras = horasTrabalhadas - horasNormais
+                            var valorHoraExtra = valorHora * 1.5
+                            var salario = valorHora * horasTrabalhadas
+                            var salarioExtra = salarioBase + (horasExtras * valorHoraExtra)
+                            
+                            setvalorFinal(salario)          
+                            
+                        } else {
+                            setvalorFinal(salarioExtra)
+                        
                         }
                     }}
                 />
-                <Text style={styles.fontes}>Salário base: {SalarioBase}</Text>
-                <Text style={styles.fontes}>Horas trabalhadas: {HorasTrabalhadas}</Text>
-                <Text style={styles.fontes}>Salário final: {SalarioFinal}</Text>
+                <Text style={styles.fontes}>Salário base: {salarioBase}</Text>
+                <Text style={styles.fontes}>Horas trabalhadas: {horasTrabalhadas}</Text>
+                <Text style={styles.fontes}>Salário final: {salarioFinal}</Text>
             </ImageBackground>
         </View>
 
