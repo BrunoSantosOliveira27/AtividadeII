@@ -1,20 +1,5 @@
-// 2. Simulador de Pedágio
-// Crie um aplicativo onde o usuário informe:
-// ●       Tipo de veículo (Carro, Moto, Caminhão)
-// ●       Distância percorrida (em km)
-// O pedágio é cobrado com base no tipo de veículo:
-// ●       Carro: R$ 0,10 por km
-// ●       Moto: R$ 0,05 por km
-// ●       Caminhão: R$ 0,15 por km
-// O app deve exibir o total a pagar.
-// Exemplo:
-// ●       Tipo: Carro
-// ●       Distância: 200 km
-// ●       Total: R$ 20,00
-
-
 import { useState } from 'react';
-import { View, Text, TextInput, Button, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
 const pedagio = () => {
     const [veiculo, setVeiculo] = useState('');
@@ -25,14 +10,12 @@ const pedagio = () => {
     const valorCaminhao = 0.15;
     
     return (
-
-        <View style={styles.constainer}>
-                <Text style={styles.fonte}>Tipo de veiculo</Text>
+        <View style={styles.container}>
                 <Text style={styles.fontes}>Tipo de veiculo</Text>
                 <TextInput
                     value={veiculo}
                     onChangeText={setVeiculo}
-                    placeholder="Informe o Tipo de veículo(carro,moto,caminhão)"
+                    placeholder="(carro, moto ou caminhao)"
                 />
                 <Text style={styles.fontes}>Distância em KM</Text>
                 <TextInput
@@ -43,23 +26,29 @@ const pedagio = () => {
                 <Button
                     title="Exibir total a pagar"
                     onPress={() => {
-                        const kmPorHora = Number(km);
-                        const valorHora = salario / horasNormais;
+                        if (veiculo.toUpperCase() === "MOTO"){
+                            var pedagio = km * valorMoto
+                            setvalorFinal(pedagio)
 
-                        if (horas <= horasNormais) {
-                            let salarioFinal = valorHora * horas
-                            setvalorFinal(salarioFinal)
+                        } 
+                        else if (veiculo.toUpperCase() === "CARRO"){
+                            var pedagio = km * valorCarro
+                            setvalorFinal(pedagio)
+
+                        } 
+                        else if (veiculo.toUpperCase() === "CAMINHAO"){
+                            var pedagio = km * valorCaminhao
+                            setvalorFinal(pedagio)
                         } else {
-                            let horasExtras = horas - horasNormais
-                            let valorHoraExtra = valorHora * 1.5
-                            let salarioFinal = salario + (horasExtras * valorHoraExtra)
-                            setvalorFinal(salarioFinal)
+                            alert("Por favor, informe apenas Moto, Carro ou Caminhão!")
                         }
+                        
+
                     }}
                 />
-                <Text style={styles.fontes}>Salário base: {salarioBase}</Text>
-                <Text style={styles.fontes}>Horas trabalhadas: {horasTrabalhadas}</Text>
-                <Text style={styles.fontes}>Salário final: {valorFinal.toFixed(2)}</Text>
+                <Text style={styles.resultado}>Tipo de veículo: {veiculo}</Text>
+                <Text style={styles.resultado}>Distância: {km} Km/h</Text>
+                <Text style={styles.resultado}>Total: R$ {valorFinal.toFixed(2)}</Text>
         </View>
 
 
@@ -71,19 +60,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'red',
     },
-    logo: {
-        width: 300,
-        height: 400
-    },
-    fonte: {
-        fontSize: 22,
-        color: 'white',
-        textAlign: 'center',
+    resultado: {
+        fontSize: 20,
         fontWeight: 'bold',
+        color: 'black'
     },
-    constainer: {
+    container: {
         alignItems: 'center',
-        justifyContent: 'center'
+        marginTop: 50
     }
 });
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, TextInput, Button, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
 const calculoHoraExtra = () => {
     const [salarioBase, setvalorSalario] = useState(0);
@@ -9,8 +9,7 @@ const calculoHoraExtra = () => {
 
     return (
 
-        <View style={styles.constainer}>
-                <Text style={styles.fonte}>Salario base</Text>
+        <View style={styles.container}>
                 <Text style={styles.fontes}>Salário base</Text>
                 <TextInput
                     value={salarioBase}
@@ -41,9 +40,9 @@ const calculoHoraExtra = () => {
                         }
                     }}
                 />
-                <Text style={styles.fontes}>Salário base: {salarioBase}</Text>
-                <Text style={styles.fontes}>Horas trabalhadas: {horasTrabalhadas}</Text>
-                <Text style={styles.fontes}>Salário final: {salarioFinal.toFixed(2)}</Text>
+                <Text style={styles.resultado}>Salário base: {salarioBase}</Text>
+                <Text style={styles.resultado}>Horas trabalhadas: {horasTrabalhadas}</Text>
+                <Text style={styles.resultado}>Salário final: {salarioFinal.toFixed(2)}</Text>
         </View>
 
 
@@ -55,19 +54,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'red',
     },
-    logo: {
-        width: 300,
-        height: 400
-    },
-    fonte: {
-        fontSize: 22,
-        color: 'white',
-        textAlign: 'center',
+    resultado: {
+        fontSize: 20,
         fontWeight: 'bold',
+        color: 'black'
     },
-    constainer: {
+    container: {
         alignItems: 'center',
-        justifyContent: 'center'
+        marginTop: 50
     }
 });
 
