@@ -1,59 +1,59 @@
-import { View, StyleSheet } from 'react-native';
-import Botao from './Botao';
+import { View, StyleSheet, Text } from 'react-native';
 
 const tabuleiro = () => {
-    <View style={styles.container}>
-        <View style={styles.botoes}>
-            <Botao/>
-            <Botao/>
-            <Botao/>
-            <Botao/>
-    
-            <Botao/>
-            <Botao/>
-            <Botao/>
-            <Botao/>
-    
-            <Botao/>
-            <Botao/>
-            <Botao/>
-            <Botao/>
-    
-            <Botao/>
-            <Botao/>
-            <Botao/>
-            <Botao/>
-    
+    return (
+        <View style={styles.principal}>
+            <View style={styles.container}>
+                <View style={styles.black}></View>
+                <View style={styles.white}></View>
+                <View style={styles.black}></View>
+                <View style={styles.white}></View>
+            </View>
+            <View style={styles.container}>
+                <View style={styles.white}></View>
+                <View style={styles.black}></View>
+                <View style={styles.white}></View>
+                <View style={styles.black}></View>
+            </View>
+            <View style={styles.container}>
+                <View style={styles.black}></View>
+                <View style={styles.white}></View>
+                <View style={styles.black}></View>
+                <View style={styles.white}></View>
+            </View>
+            <View style={styles.container}>
+                <View style={styles.white}></View>
+                <View style={styles.black}></View>
+                <View style={styles.white}></View>
+                <View style={styles.black}></View>
+            </View>
         </View>
+    );
+};
 
-    </View>
 
-    const styles = StyleSheet.create({
-        botao: {
-            fontSize: 50,
-            width: width / 4,
-            height: width / 4,
-            backgroundColor: '#f0f0f0',
-            textAlign: 'center',
-            borderWidth: 1,
-            borderColor: '#888',
-        },
-        visor: {
-            flex: 1,
-            padding: 20,
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "flex-end",
-            backgroundColor: "rgba(0,0,0,0.6)"
-        },
-        container: {
-            flex: 1,
-            justifyContent: 'flex-end',
-        },
-        botoes: {
-            flexDirection: "row",
-            flexWrap: "wrap"
-        }
-    })
-}
+const styles = StyleSheet.create({
+    principal: {
+        paddingTop: 150,
+    },
+    container: {
+        color: 'red',
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
+    black: {
+        backgroundColor: 'black',
+        height: 100,
+        width: 100,
+        borderColor: 'black',
+        borderWidth: 1
+    },
+    white: {
+        backgroundColor: 'white',
+        height: 100,
+        width: 100,
+        borderColor: 'black',
+        borderWidth: 1
+    },
+})
 export default tabuleiro;

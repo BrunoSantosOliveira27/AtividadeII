@@ -9,7 +9,7 @@ import Botao from './Components/Botao';
 export default function App() {
   return (
     <SafeAreaView>
-      <Botao/>
+      <Tabuleiro/>
     </SafeAreaView>
   );
 }
